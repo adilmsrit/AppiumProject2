@@ -7,6 +7,5 @@ public class ChromeTest extends baseChromeBrowser {
         AndroidDriver<AndroidElement> driver = capabilities();
        driver.get("https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/web/chromedriver.md");
 
-
     }
 }
