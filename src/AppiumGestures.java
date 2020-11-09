@@ -22,5 +22,6 @@ public class AppiumGestures extends base {
         touchAction.longPress(longPressOptions()
                 .withElement(element(peopelname)).withDuration(Duration.ofSeconds(4))).release().perform();
 
+
     }
 }

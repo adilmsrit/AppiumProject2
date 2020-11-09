@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class base {
     //Create a base class so that we can call this in every test case.
     public static AndroidDriver<AndroidElement> capabilities(String device) throws MalformedURLException {
-        AndroidDriver<AndroidElement> driver;
+        AndroidDriver<AndroidElement> androidDriver;
 
         File f = new File("src");
         File fs = new File(f, "ApiDemos-debug.apk");
@@ -25,8 +25,8 @@ public class base {
         capabilities.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
-        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return driver;
+        androidDriver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        androidDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return androidDriver;
     }
 }
