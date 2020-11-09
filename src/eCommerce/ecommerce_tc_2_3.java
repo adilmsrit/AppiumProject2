@@ -3,6 +3,8 @@ package eCommerce;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
@@ -31,5 +33,8 @@ public class ecommerce_tc_1 extends baseForeCommerce {
             }
         }
         driver.findElementById("com.androidsample.generalstore:id/appbar_btn_cart").click();
+
+        String textFromCart = driver.findElement(By.xpath("//*[@resource-id='com.androidsample.generalstore:id/productName']")).getText();
+        Assert.assertEquals("Jordan 6 Rings", textFromCart);
     }
 }
