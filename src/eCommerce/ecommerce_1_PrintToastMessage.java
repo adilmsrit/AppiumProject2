@@ -5,7 +5,7 @@ import io.appium.java_client.android.AndroidElement;
 
 import java.net.MalformedURLException;
 
-public class ecommerce_2_PrintToastMessage extends baseForeCommerce {
+public class ecommerce_1_PrintToastMessage extends baseForeCommerce {
 
     public static void main(String... args) throws MalformedURLException {
         AndroidDriver<AndroidElement> driver = capabilities();

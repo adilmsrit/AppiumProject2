@@ -9,8 +9,11 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 
-public class ecommerce_tc_1 extends baseForeCommerce {
-
+public class ecommerce_tc_2_3 extends baseForeCommerce {
+/* Test Case automated below
+* 2. Shop the items in the app by scrolling to specific Product and add to cart
+* 3. Validate if the items selected in the page 2 are matching with the items displayed in the checkout page.
+* */
     @Test
     public void validateOrdeinCheckoutPage() throws MalformedURLException {
         AndroidDriver<AndroidElement> driver = capabilities();
