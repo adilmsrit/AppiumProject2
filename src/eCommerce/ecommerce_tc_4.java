@@ -3,6 +3,7 @@ package eCommerce;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,6 +31,8 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         for (AndroidElement element : AddToCartElements) {
             element.click();
         }
+
+//        WebElement AddToCartElements = driver.findElements(By.xpath("//*[@text='']"));
 
         driver.findElementById("com.androidsample.generalstore:id/appbar_btn_cart").click();
 
