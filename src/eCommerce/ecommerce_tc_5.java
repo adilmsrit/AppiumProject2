@@ -1,15 +1,21 @@
 package eCommerce;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.List;
 
-public class ecommerce_tc_4 extends baseForeCommerce {
+public class ecommerce_tc_5 extends baseForeCommerce {
 /* Test Case automated below
 * Validate the total Amount displayed in the checkout page matches with the sum of products selected for shopping.
 *
@@ -18,11 +24,7 @@ public class ecommerce_tc_4 extends baseForeCommerce {
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
         AndroidDriver<AndroidElement> driver = capabilities();
         driver.findElementById("com.androidsample.generalstore:id/nameField").sendKeys("Helllooo");
-        driver.findElementByXPath("//*[@text='Female']").click();
         driver.hideKeyboard();
-        driver.findElementById("android:id/text1").click();
-        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Argentina\"));")
-                .click();
         driver.findElementById("com.androidsample.generalstore:id/btnLetsShop").click();
 
         List<AndroidElement> AddToCartElements = driver.findElements(By.xpath("//*[@text='ADD TO CART']"));
@@ -44,20 +46,19 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         double totalFromApp = Double.parseDouble(driver.findElementById("com.androidsample.generalstore:id/totalAmountLbl").getText().substring(1));
 
         Assert.assertEquals(total, totalFromApp);
-    }
 
-    public int[] front11(int[] a, int[] b) {
+        WebElement checkBox = driver.findElementByClassName("android.widget.CheckBox");
 
-        int[] result = new int[2];
+        TouchAction touchAction = new TouchAction(driver);
+        touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(checkBox))).perform();
 
-        if (a.length == 0) result[0] = b[0];
-        else if (b.length == 0) result[0] =  a[0];
-        else {
-            result[0] = a[0];
-            result[1] = b[0];
-        }
-
-        return result;
+        WebElement terms = driver.findElementById("com.androidsample.generalstore:id/termsButton");
+        touchAction.longPress(LongPressOptions.longPressOptions()
+                .withElement(ElementOption.element(terms))
+                .withDuration(Duration.ofSeconds(5))).perform();
+        driver.findElementById("android:id/button1").click();
+        Thread.sleep(1000);
+        driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
 
     }
 
