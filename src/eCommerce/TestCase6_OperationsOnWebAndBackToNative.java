@@ -14,11 +14,11 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
-public class ecommerce_tc_4 extends baseForeCommerce {
+public class TestCase6_OperationsOnWebAndBackToNative extends baseForeCommerce {
 /* Test Case automated below
-* Validate the total Amount displayed in the checkout page matches with the sum of products selected for shopping.
-*
+* Verify if user can do operations on Web View and can navigate back to Native App if needed.
 * */
     @Test
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
@@ -59,6 +59,16 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         driver.findElementById("android:id/button1").click();
         Thread.sleep(1000);
         driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
+
+        Thread.sleep(3000);
+        Set<String> contextNames = driver.getContextHandles();
+        for (String contextName : contextNames) {
+            System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+        }
+
+
+
+
 
     }
 

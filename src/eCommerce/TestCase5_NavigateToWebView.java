@@ -14,12 +14,12 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
-public class ecommerce_tc_5 extends baseForeCommerce {
+public class TestCase5_NavigateToWebView extends baseForeCommerce {
 /* Test Case automated below
-* Validate the total Amount displayed in the checkout page matches with the sum of products selected for shopping.
-*
-* */
+* Validate Mobile gestures working for Links(longPress) and navigate to WebView
+*/
     @Test
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -59,6 +59,16 @@ public class ecommerce_tc_5 extends baseForeCommerce {
         driver.findElementById("android:id/button1").click();
         Thread.sleep(1000);
         driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
+
+        Thread.sleep(3000);
+        Set<String> contextNames = driver.getContextHandles();
+        for (String contextName : contextNames) {
+            System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+        }
+
+
+
+
 
     }
 
