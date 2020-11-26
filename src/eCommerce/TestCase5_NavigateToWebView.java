@@ -7,18 +7,19 @@ import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
-public class ecommerce_tc_4 extends baseForeCommerce {
-/* Test Case automated below
-* Validate the total Amount displayed in the checkout page matches with the sum of products selected for shopping.
-*
-* */
+public class TestCase5_NavigateToWebView extends baseForeCommerce {
+    /* Test Case automated below
+     * Validate Mobile gestures working for Links(longPress) and navigate to WebView
+     */
     @Test
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -45,20 +46,6 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         double totalFromApp = Double.parseDouble(driver.findElementById("com.androidsample.generalstore:id/totalAmountLbl").getText().substring(1));
 
         Assert.assertEquals(total, totalFromApp);
-    }
-
-    public int[] front11(int[] a, int[] b) {
-
-        int[] result = new int[2];
-
-        if (a.length == 0) result[0] = b[0];
-        else if (b.length == 0) result[0] =  a[0];
-        else {
-            result[0] = a[0];
-            result[1] = b[0];
-        }
-
-        return result;
 
         WebElement checkBox = driver.findElementByClassName("android.widget.CheckBox");
 
@@ -72,6 +59,13 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         driver.findElementById("android:id/button1").click();
         Thread.sleep(1000);
         driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
+
+        Thread.sleep(3000);
+        Set<String> contextNames = driver.getContextHandles();
+        for (String contextName : contextNames) {
+            System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
+        }
+
 
     }
 

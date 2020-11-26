@@ -1,20 +1,15 @@
 package eCommerce;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.touch.LongPressOptions;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
-import java.time.Duration;
 import java.util.List;
 
-public class ecommerce_tc_4 extends baseForeCommerce {
+public class ecommerce_tc_3 extends baseForeCommerce {
 /* Test Case automated below
 * Validate the total Amount displayed in the checkout page matches with the sum of products selected for shopping.
 *
@@ -23,7 +18,11 @@ public class ecommerce_tc_4 extends baseForeCommerce {
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
         AndroidDriver<AndroidElement> driver = capabilities();
         driver.findElementById("com.androidsample.generalstore:id/nameField").sendKeys("Helllooo");
+        driver.findElementByXPath("//*[@text='Female']").click();
         driver.hideKeyboard();
+        driver.findElementById("android:id/text1").click();
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Argentina\"));")
+                .click();
         driver.findElementById("com.androidsample.generalstore:id/btnLetsShop").click();
 
         List<AndroidElement> AddToCartElements = driver.findElements(By.xpath("//*[@text='ADD TO CART']"));
@@ -59,19 +58,6 @@ public class ecommerce_tc_4 extends baseForeCommerce {
         }
 
         return result;
-
-        WebElement checkBox = driver.findElementByClassName("android.widget.CheckBox");
-
-        TouchAction touchAction = new TouchAction(driver);
-        touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(checkBox))).perform();
-
-        WebElement terms = driver.findElementById("com.androidsample.generalstore:id/termsButton");
-        touchAction.longPress(LongPressOptions.longPressOptions()
-                .withElement(ElementOption.element(terms))
-                .withDuration(Duration.ofSeconds(5))).perform();
-        driver.findElementById("android:id/button1").click();
-        Thread.sleep(1000);
-        driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
 
     }
 
