@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.Set;
 
 public class TestCase5_NavigateToWebView extends baseForeCommerce {
-/* Test Case automated below
-* Validate Mobile gestures working for Links(longPress) and navigate to WebView
-*/
+    /* Test Case automated below
+     * Validate Mobile gestures working for Links(longPress) and navigate to WebView
+     */
     @Test
     public void validateOrdeinCheckoutPage() throws MalformedURLException, InterruptedException {
         AndroidDriver<AndroidElement> driver = capabilities();
@@ -65,9 +65,6 @@ public class TestCase5_NavigateToWebView extends baseForeCommerce {
         for (String contextName : contextNames) {
             System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
         }
-
-
-
 
 
     }
